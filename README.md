@@ -5,9 +5,9 @@
 
 ## Overview
 
-This project implements an end-to-end systematic equity research pipeline investigating whether classical factor signals — momentum, value, quality, and earnings surprise — predict forward returns in the S&P 500. Built independently to mirror institutional buy-side research workflows: signal construction, rolling backtesting, OLS cross-sectional regression, and rigorous performance attribution.
+This project implements an end-to-end systematic equity research pipeline investigating whether classical factor signals of momentum, value, quality, and earnings surprise predict forward returns in the S\&P 500. Built independently to mirror institutional buy-side research workflows: signal construction, rolling backtesting, OLS cross-sectional regression, and rigorous performance attribution.
 
-The research evaluates three model specifications across different universes and data availability constraints, with a focus on understanding *which* factors drive returns and *whether* combining signals improves risk-adjusted performance.
+The research evaluates three model specifications across different universes and data availability constraints, with a focus on understanding which factors drive returns and whether combining signals improves risk-adjusted performance.
 
 ---
 
@@ -19,7 +19,7 @@ The research evaluates three model specifications across different universes and
 | B — Momentum Only | 498 tickers | 136 | 27.2% | **1.33** | -20.3% |
 | C — Four-Factor (Overlap) | 325 tickers | 59 | 6.9% | 0.39 | -25.5% |
 
-**Headline finding:** A simple price-momentum strategy (Model B) significantly outperformed multi-factor fundamental models across a broader universe and longer time horizon, achieving a Sharpe ratio of 1.33 gross of transaction costs over 11+ years. Adding value, quality, and earnings surprise signals to momentum *reduced* Sharpe ratio in the test period — a non-obvious result with meaningful implications for factor combination.
+**Headline finding:** A simple price-momentum strategy (Model B) significantly outperformed multi-factor fundamental models across a broader universe and longer time horizon, achieving a Sharpe ratio of 1.33 gross of transaction costs over 11+ years. Adding value, quality, and earnings surprise signals to momentum actually *reduced* Sharpe ratio in the test period which is a non-obvious result with meaningful implications for future factor combination.
 
 ---
 
@@ -35,7 +35,7 @@ Book value per share divided by price, constructed from quarterly fundamental da
 Revenue minus cost of goods sold divided by total assets (Novy-Marx, 2013). Positive coefficient (~0.030) across both four-factor models but statistically weak (p ≈ 0.056), suggesting a quality premium that does not clear conventional significance thresholds in this sample.
 
 **Standardized Unexpected Earnings (SUE)**
-Earnings surprise normalized by historical surprise volatility. Near-zero coefficient and statistically insignificant (p ≈ 0.81) after controlling for other factors — no incremental predictive power in this universe and period.
+Earnings surprise normalized by historical surprise volatility. Near-zero coefficient and statistically insignificant (p ≈ 0.81) after controlling for other factors and no incremental predictive power in this universe and period.
 
 ---
 
@@ -45,7 +45,7 @@ Earnings surprise normalized by historical surprise volatility. Near-zero coeffi
 Three universes tested: a core 358-ticker universe with full fundamental data coverage (Models A and C), and a broader 498-ticker price-only universe enabling a longer backtest history (Model B).
 
 **Signal Construction**
-All signals constructed with strict point-in-time discipline — only data available as of each rebalance date used. Fundamental signals use the most recently *reported* quarter, not the most recently *ended* quarter, to prevent look-ahead bias in accounting data.
+All signals constructed with strict point-in-time discipline and only data available as of each rebalance date used. Fundamental signals use the most recently *reported* quarter, not the most recently *ended* quarter, to prevent look-ahead bias in accounting data.
 
 **Backtesting**
 Monthly rebalance frequency. Long-short quintile portfolios: long top 20% of signal, short bottom 20%, equal-weighted within each leg. Performance calculated as the return spread between long and short legs.
@@ -69,7 +69,7 @@ OLS regression of one-month forward returns on standardized factor scores:
 | Quality | +0.030 | 0.056 | — | — | +0.030 | 0.057 |
 | SUE | -0.004 | 0.808 | — | — | -0.003 | 0.823 |
 
-Momentum is the only factor significant at the 5% level across all specifications. Value loads negatively — statistically significant but directionally opposite to classical Fama-French predictions — consistent with post-2010 large-cap value underperformance documented in the literature.
+Momentum is the only factor significant at the 5% level across all specifications. Value loads negatively,  statistically significant but directionally opposite to classical Fama-French predictions, which is consistent with post-2010 large-cap value underperformance documented in the literature.
 
 ---
 
@@ -81,7 +81,7 @@ Momentum is the only factor significant at the 5% level across all specification
 
 **Look-ahead bias in universe construction:** The three model universes were defined based on data availability observed ex-post, which may introduce subtle selection bias in the fundamental universe (Models A and C).
 
-**Short backtest for fundamental models:** Models A and C cover only 59 months (~5 years) due to fundamental data availability constraints — too short to draw strong conclusions about factor robustness across market regimes.
+**Short backtest for fundamental models:** Models A and C cover only 59 months (~5 years) due to fundamental data availability constraints which is too short to draw strong conclusions about factor robustness across market regimes.
 
 ---
 
